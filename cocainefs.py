@@ -19,10 +19,10 @@ class CocaineFS(routefs.RouteFS):
         return result
 
     def namespaces(self, **kwargs):
-        return list(self.storage.find('system', ['public', 'namespace']))
+        return list(self.storage.find('system', ['public', 'namespace']).get())
 
     def keys(self, namespace, **kwargs):
-        return list(self.storage.find(namespace, ['public']))
+        return list(self.storage.find(namespace, ['public']).get())
 
     def read(self, namespace, key, **kwargs):
         return str(self.storage.read(namespace, key).get())
